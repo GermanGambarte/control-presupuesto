@@ -1,21 +1,55 @@
-import { Modal } from './components/Modal.component'
+import { useState } from 'react'
+import {
+  Input,
+  InputLeftElement,
+  InputRightElement,
+  Button,
+  Center,
+  Grid,
+  Heading,
+  useDisclosure,
+  InputGroup,
+} from '@chakra-ui/react'
+
+import { ModalView } from './components/ModalView.component'
 import { Dashboard } from './components/Dashboard.component'
-import { List } from './components/List.component'
-import './App.css'
+import { SpentsTable } from './components/SpentsTable.component'
+import { Form } from './components/Form.component'
 
 const App = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [spents] = useState([])
+
   return (
     <main>
-      <h1>Gasto Semanal</h1>
-      <div className="btn-container">
-        <button>Definir presupuesto</button>
-        <button>Agregar gasto</button>
-      </div>
-      <Modal />
-      <div className="container">
+      <Heading as="h1" textAlign="center">
+        Gasto Semanal
+      </Heading>
+      <InputGroup m="0 auto" size="md" width="30%">
+        <InputLeftElement
+          color="gray.300"
+          fontSize="1.2rem"
+          pointerEvents="none"
+        >
+          $
+        </InputLeftElement>
+        <Input placeholder="e.j. 1500" />
+        <InputRightElement w="10rem">
+          <Button h="1.75rem" size="sm">
+            Definir Presupuesto
+          </Button>
+        </InputRightElement>
+      </InputGroup>
+      <Center>
+        <Button onClick={onOpen}>Agregar gasto</Button>
+      </Center>
+      <ModalView isOpen={isOpen} onClose={onClose}>
+        <Form />
+      </ModalView>
+      <Grid m="0 auto" templateColumns="repeat(2,1fr)" width="80%">
         <Dashboard />
-        <List />
-      </div>
+        <SpentsTable spents={spents} />
+      </Grid>
     </main>
   )
 }
