@@ -22,10 +22,10 @@ const App = () => {
 
   return (
     <main>
-      <Heading as="h1" textAlign="center">
+      <Heading as="h1" marginBlock="6" textAlign="center">
         Gasto Semanal
       </Heading>
-      <InputGroup m="0 auto" size="md" width="30%">
+      <InputGroup m="0 auto" mb="3" size="md" width="30%">
         <InputLeftElement
           color="gray.300"
           fontSize="1.2rem"
@@ -40,8 +40,10 @@ const App = () => {
           </Button>
         </InputRightElement>
       </InputGroup>
-      <Center>
-        <Button onClick={onOpen}>Agregar gasto</Button>
+      <Center mb="6">
+        <Button w="30%" onClick={onOpen}>
+          Agregar gasto
+        </Button>
       </Center>
       <ModalView isOpen={isOpen} onClose={onClose}>
         <Form />
