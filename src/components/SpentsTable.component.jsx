@@ -1,46 +1,31 @@
-import {
-  TableContainer,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Td,
-  Tbody,
-  Button,
-} from '@chakra-ui/react'
-
-export const SpentsTable = ({ spents }) => {
+export const SpentsTable = ({ spents, deleteSpent }) => {
   return (
-    <TableContainer>
-      <Table w="80%">
-        <Thead>
-          <Tr>
-            <Th>Motivo</Th>
-            <Th>Monto</Th>
-            <Th>Opciones</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {spents.map((spent) => (
-            <Tr key={spent.id}>
-              <Td>{spent.motive}</Td>
-              <Td>{spent.amount}</Td>
-              <Td display="flex" justifyContent="space-around">
-                <Button>Editar</Button>
-                <Button>Eliminar</Button>
-              </Td>
-            </Tr>
-          ))}
-          <Tr>
-            <Td>Motivo</Td>
-            <Td>$0,00</Td>
-            <Td display="flex" justifyContent="space-around">
-              <Button>Editar</Button>
-              <Button>Eliminar</Button>
-            </Td>
-          </Tr>
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <table>
+      <thead>
+        <tr>
+          <th>Motivo</th>
+          <th>Monto</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {spents.map((spent) => (
+          <tr key={spent.id}>
+            <td>{spent.motive}</td>
+            <td>{spent.amount}</td>
+            <td>
+              <button onClick={() => deleteSpent(spent.id)}>Eliminar</button>
+            </td>
+          </tr>
+        ))}
+        <tr>
+          <td>Motivo</td>
+          <td>$0,00</td>
+          <td>
+            <button>Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   )
 }

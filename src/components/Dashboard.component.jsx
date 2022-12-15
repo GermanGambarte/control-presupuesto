@@ -1,23 +1,45 @@
-import {
-  Box,
-  CircularProgress,
-  CircularProgressLabel,
-  Text,
-} from '@chakra-ui/react'
+import { useState } from 'react'
+import { Progress } from 'react-sweet-progress'
+import 'react-sweet-progress/lib/style.css'
+import './dashboard.css'
+export const Dashboard = ({ budget = '25000', spent = '10000' }) => {
+  // const percentage = (spent * 100) / budget
+  const percentage = 50 
+  const [status, setStatus] = useState(() => {
+    if (percent > 50)  setStatus('active')
 
-export const Dashboard = () => {
+    if (percent > 75)  setStatus('error')
+     setStatus('default')
+  }
+
   return (
-    <Box m="0 auto" w="80%">
-      <CircularProgress size="300px" value={40}>
-        <CircularProgressLabel fontSize="40px">
-          40% <Text>Gastado</Text>
-        </CircularProgressLabel>
-      </CircularProgress>
-      <Box>
-        <Text>Presupuesto: $00,00</Text>
-        <Text>Disponible: $00,00</Text>
-        <Text>Gastado: $00,00</Text>
-      </Box>
-    </Box>
+    <Progress
+      percent={percentage}
+      status={status}
+      strokeWidth={10}
+      theme={{
+        error: {
+          symbol: percentage + '%',
+          trailColor: 'pink',
+          color: 'red',
+        },
+        default: {
+          symbol: percentage + '%',
+          trailColor: 'lightblue',
+          color: 'blue',
+        },
+        active: {
+          symbol: percentage + '%',
+          trailColor: 'yellow',
+          color: 'orange',
+        },
+        success: {
+          symbol: percentage + '%',
+          trailColor: 'lime',
+          color: 'green',
+        },
+      }}
+      type="circle"
+    />
   )
 }

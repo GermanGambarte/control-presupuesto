@@ -1,0 +1,45 @@
+/* .progress-container {
+  display: grid;
+  place-items: center;
+  gap: var(--size-fluid-1);
+  padding: var(--size-fluid-3) var(--size-fluid-3) var(--size-fluid-5);
+  width: 100%;
+}
+
+.progress-wrapper {
+  margin-inline: auto;
+  display: grid;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+
+.bar-container {
+  position: relative;
+  background-color: white;
+  height: 3rem;
+  border-radius: 50rem;
+  overflow: hidden;
+  z-index: 20;
+  box-shadow: 0 0 0.8rem hsl(130 0% 0% / 0.5);
+}
+
+.bar-container::before {
+  content: attr(data-content);
+  display: grid;
+  place-content: center;
+  position: absolute;
+  inset: 0;
+  width: var(--percentage);
+  height: 3rem;
+  background-color: red;
+  border-radius: 50rem;
+  z-index: 20;
+  transition: width 1s cubic-bezier(0.94, 0.01, 0.31, 0.97), content 2s ease-in;
+} */
+
+/* progress {
+  opacity: 0;
+} */
